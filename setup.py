@@ -3,10 +3,11 @@ from setuptools import setup, find_packages
 from subprocess import check_output
 import subprocess
 import py4j
+import py4j.java_gateway
 import os
 
-py4j_path = os.path.join(*py4j.__path__[0].split('/')[:-4])
-py4j_jar_path = os.path.join('/', py4j_path, 'share', 'py4j', 'py4j' + py4j.__version__ + '.jar')
+
+py4j_jar_path = py4j.java_gateway.find_jar_path()
 
 cdk_version = 'cdk-2.1.1'
 cdk_jar_path = './cdk_pywrapper/cdk/'
